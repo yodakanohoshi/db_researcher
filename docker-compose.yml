@@ -1,0 +1,15 @@
+services:
+  tool:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    image: dbml-doc-kit:latest
+    container_name: dbml-doc-kit
+    working_dir: /work
+    volumes:
+      - .:/work:cached        # ← Windowsの作業フォルダをそのまま共有
+    tty: true
+    entrypoint: /bin/sh
+    # 例: 生成物をブラウズしたければ以下を追加してもOK
+    # ports:
+    #   - "8080:8080"
