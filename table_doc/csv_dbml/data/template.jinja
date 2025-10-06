@@ -1,0 +1,9 @@
+
+{% for table in tables %}
+Table {{ table["table_name"] }} {
+{% for col in table["columns"] %}
+  {{ col["name"] }} {{ col["type"] }} {{ col["other"] or ''}}
+{% endfor %}
+}
+
+{% endfor %}

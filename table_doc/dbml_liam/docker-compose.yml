@@ -1,0 +1,11 @@
+services:
+  liamerd:
+    build:
+      context: ./docker
+    container_name: liamerd-builder
+    working_dir: /work
+    volumes:
+      - .:/work:cached
+    tty: true
+    ports:
+      - "5174:5174"

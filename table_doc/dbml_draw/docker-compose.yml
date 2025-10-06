@@ -1,0 +1,8 @@
+services:
+  drawdb:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile.drawdb
+    container_name: drawdb-app
+    ports:
+      - "3000:80"

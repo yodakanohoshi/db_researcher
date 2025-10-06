@@ -1,0 +1,15 @@
+FROM node:20-slim
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git ca-certificates && \
+    rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+RUN git clone --depth 1 https://github.com/drawdb-io/drawdb.git . \
+ && npm ci \
+ && npm run build
+
+RUN npm i -g http-server
+EXPOSE 80
+CMD ["sh","-lc","http-server dist -p 80 -c-1"]
